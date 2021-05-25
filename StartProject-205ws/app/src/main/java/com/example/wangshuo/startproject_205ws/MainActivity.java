@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements WeatherListener,V
     @Override
     public void onResponse(WeatherInfo weatherinfo) {
         if(weatherinfo!=null){
-            tvcityname.setText(weatherinfo.getCity());
+            tvcityname.setText(weatherinfo.getCity()+weatherinfo.getSD()+weatherinfo.getTemp()+weatherinfo.getWD()+weatherinfo.getWS());
         }else
             tvcityname.setText("未知");
     }
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements WeatherListener,V
         setContentView(R.layout.activity_main);
         init();
     }
+
     private  void init(){
         etcity=(EditText)findViewById(R.id.editText);
         tvcityname=(TextView)findViewById(R.id.textView);
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements WeatherListener,V
         btn2.setOnClickListener(this);
 
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId())
